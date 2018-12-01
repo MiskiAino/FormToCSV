@@ -1,8 +1,10 @@
 pwgen==0.8.2.post0
 requests==2.20.0
 dj-database-url==0.4.1
-Django==1.10.2
 gunicorn==19.6.0
 psycopg2==2.7.6.1
 whitenoise==3.2.2
 path.py==7.7.1
+Django==2.1.2
+django-allauth==0.38.0
+django-bootstrap3==11.0.0
