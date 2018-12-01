@@ -1,0 +1,61 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>Login page</title>
+        <link rel="stylesheet" href="{% static  'css/style.css' %}">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    </head>
+    <body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <h3>Создать новый документ</h3>
+      <form class="createDoc"  method="post">{% csrf_token %}
+      <input type="text" name="name">
+      <button class="btn btn-outline-success"  type="submit" name="button">Создать</button>
+      </form>
+
+
+
+
+    имя документа:  <h2>{{ doc.name }}</h2>
+
+      <form class="pform" action="add/" method="post">{% csrf_token %}
+        <p>Данные:</p>
+        <textarea name="data" rows="5" cols="40"></textarea>
+        <p><input hidden value="{{ doc.id }}" type="text" name="key"></p>
+        <button class="btn btn-primary" value="{{ doc.name }}" type="submit" name="dcmt">превратить в .csv</button>
+      </form>
+
+      <a class="btn btn-outline-primary"  download href="{% static  '' %}{{ doc.urlDownload }}">скачать</a>
+
+
+    </div>
+    <div class="center col-md-2">
+      <h2>ИЛИ</h2>
+    </div>
+    <div class="left col-md-5">
+      <form enctype="multipart/form-data" action="upload/" method="post">{% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-primary" name="button">превратить в .csv</button>
+      </form>
+      <a class="btn btn-outline-primary" download href="{% static  'media/' %}{{ upload.download }}">скачать</a>
+    </div>
+  </div>
+
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha38"></script>
+
+    </body>
+</html>
